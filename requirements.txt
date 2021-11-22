@@ -1,0 +1,4 @@
+fake_headers
+requests
+bs4
+pyTelegramBotAPI
