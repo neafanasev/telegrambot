@@ -3,7 +3,7 @@ from telebot import types
 import re
 import datetime
 from ImageParser import YandexImage
-token = "2057968380:AAH9PVMhZR76QD_FYJxJ9x9Wy_LPxkzde_k"
+from tokenT import token
 bot = telebot.TeleBot(token)
 
 
@@ -24,15 +24,15 @@ def start_message(message):
 def calculator(message):
     a = message.text.split('/calculator ')[1]
     a = ''.join([x for x in a if x != ' '])
-    znak = ''.join([x for x in a if not x.isdigit()])
+    c = ''.join([x for x in a if not x.isdigit()])
     x, y = map(int, re.split("\+|\-|\/|\*", a))
-    if znak == '+':
+    if c == '+':
         res = x + y
-    elif znak == '-':
+    elif c == '-':
         res = x - y
-    elif znak == '*':
+    elif c == '*':
         res = x * y
-    elif znak == '/':
+    elif c == '/':
         res = x / y
     else:
         res = 'Неопознанный оператор'
@@ -58,8 +58,6 @@ def searchimg(message):
     parser = YandexImage()
     url = parser.search(a)[0].url
     bot.send_photo(message.chat.id, url)
-
-
 
 
 
